@@ -3,7 +3,7 @@ import Users from "./collections/Users";
 import Clients from "./collections/Clients";
 
 export default buildConfig({
-  serverURL: "https://payload-api.vercel.app",
+  serverURL: "http://app.inteminer.com:3000",
   admin: {
     user: Users.slug,
   },
