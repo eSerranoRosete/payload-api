@@ -3,7 +3,7 @@ import Users from "./collections/Users";
 import Clients from "./collections/Clients";
 
 export default buildConfig({
-  serverURL: "https://payload-inteminer.herokuapp.com/admin",
+  serverURL: "https://payload-inteminer.herokuapp.com",
   admin: {
     user: Users.slug,
   },
