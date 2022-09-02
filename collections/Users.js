@@ -21,32 +21,6 @@ const Users = {
       type: "text",
       required: true,
     },
-    {
-      name: "social",
-      type: "array",
-      label: "Social Media",
-      fields: [
-        {
-          name: "type",
-          label: "Social Media Type",
-          type: "select",
-          options: [
-            {
-              label: "Facebook",
-              value: "facebook",
-            },
-            {
-              label: "Instagram",
-              value: "instagram",
-            },
-          ],
-        },
-        {
-          name: "link",
-          type: "text",
-        },
-      ],
-    },
   ],
 };
 
