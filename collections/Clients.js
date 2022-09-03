@@ -52,12 +52,44 @@ const Clients = {
           type: "select",
           options: [
             {
+              label: "Whatsapp",
+              value: "whatsapp",
+            },
+            {
               label: "Facebook",
               value: "facebook",
             },
             {
               label: "Instagram",
               value: "instagram",
+            },
+            {
+              label: "Twitter",
+              value: "twitter",
+            },
+            {
+              label: "Linkedin",
+              value: "linkedin",
+            },
+            {
+              label: "Telegram",
+              value: "telegram",
+            },
+            {
+              label: "Snapchat",
+              value: "snapchat",
+            },
+            {
+              label: "Youtube",
+              value: "youtube",
+            },
+            {
+              label: "TikTok",
+              value: "tiktok",
+            },
+            {
+              label: "Website",
+              value: "website",
             },
           ],
         },

@@ -3,7 +3,7 @@ import Users from "./collections/Users";
 import Clients from "./collections/Clients";
 
 export default buildConfig({
-  serverURL: "https://payload-api.up.railway.app",
+  serverURL: process.env.DEPLOY_URL,
   admin: {
     user: Users.slug,
   },
