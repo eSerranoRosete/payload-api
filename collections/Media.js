@@ -18,7 +18,7 @@ const Media = {
       name: "url",
       type: "text",
       access: {
-        create: () => false,
+        read: () => true,
       },
       admin: {
         disabled: true,
