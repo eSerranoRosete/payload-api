@@ -9,6 +9,7 @@ const Media = {
     disableLocalStorage: true,
     s3: {
       bucket: "payloadcms-inteminer",
+      prefix: "images",
     },
     adminThumbnail: ({ doc }) =>
       `https://payloadcms-inteminer.s3.us-east-2.amazonaws.com/images/${doc.filename}`,
