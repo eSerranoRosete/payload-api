@@ -1,5 +1,8 @@
 const Media = {
   slug: "media",
+  access: {
+    read: () => true,
+  },
   upload: {
     staticURL: "/assets",
     staticDir: "assets",
@@ -18,7 +21,7 @@ const Media = {
       name: "url",
       type: "text",
       access: {
-        read: () => true,
+        create: () => false,
       },
       admin: {
         disabled: true,
