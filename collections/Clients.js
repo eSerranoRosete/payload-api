@@ -100,21 +100,9 @@ const Clients = {
       ],
     },
     {
-      name: "extra",
-      type: "array",
-      label: "Extra Content",
-      fields: [
-        {
-          name: "item",
-          type: "text",
-          required: true,
-        },
-        {
-          name: "value",
-          type: "text",
-          required: true,
-        },
-      ],
+      name: "avatar",
+      type: "upload",
+      relationTo: "media",
     },
   ],
 };
