@@ -8,101 +8,151 @@ const Clients = {
     read: () => true,
   },
   fields: [
-    // Email added by default
-    // Add more fields as needed
     {
-      name: "email",
-      type: "email",
-      required: true,
-      unique: true,
-    },
-    {
-      name: "firstName",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "lastName",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "phone",
-      type: "text",
-    },
-    {
-      name: "organization",
-      type: "select",
-      options: ["Inteminer", "Ciudad Maderas"],
-      required: true,
-    },
-    {
-      name: "title",
-      label: "Display Title",
-      type: "text",
-    },
-    {
-      name: "social",
-      type: "array",
-      label: "Social Media",
-      fields: [
+      type: "tabs",
+      tabs: [
         {
-          name: "type",
-          label: "Social Media Type",
-          type: "select",
-          options: [
+          label: "Basic Information",
+          description: "Basic information required for all users",
+          fields: [
             {
-              label: "Whatsapp",
-              value: "whatsapp",
+              name: "email",
+              type: "email",
+              required: true,
+              unique: true,
             },
             {
-              label: "Facebook",
-              value: "facebook",
+              name: "firstName",
+              type: "text",
+              required: true,
             },
             {
-              label: "Instagram",
-              value: "instagram",
+              name: "lastName",
+              type: "text",
+              required: true,
             },
             {
-              label: "Twitter",
-              value: "twitter",
+              name: "phone",
+              type: "text",
             },
             {
-              label: "Linkedin",
-              value: "linkedin",
+              name: "organization",
+              label: "Organization",
+              type: "text",
+              required: true,
             },
             {
-              label: "Telegram",
-              value: "telegram",
+              name: "avatar",
+              type: "upload",
+              relationTo: "media",
+              required: true,
             },
             {
-              label: "Snapchat",
-              value: "snapchat",
-            },
-            {
-              label: "Youtube",
-              value: "youtube",
-            },
-            {
-              label: "TikTok",
-              value: "tiktok",
-            },
-            {
-              label: "Website",
-              value: "website",
+              name: "cover",
+              label: "Cover Image",
+              type: "upload",
+              relationTo: "media",
+              required: true,
             },
           ],
         },
         {
-          name: "link",
-          type: "text",
+          label: "Card Content",
+          description: "Card Content",
+          fields: [
+            {
+              name: "title",
+              label: "Display Title",
+              type: "text",
+            },
+            {
+              name: "slider",
+              label: "Slider",
+              type: "array",
+              required: false,
+              fields: [
+                {
+                  name: "link",
+                  label: "Link",
+                  type: "text",
+                  required: false,
+                },
+                {
+                  name: "image",
+                  label: "Slider Image",
+                  type: "upload",
+                  relationTo: "media",
+                  required: true,
+                },
+              ],
+            },
+          ],
+        },
+        {
+          label: "Social Media",
+          description: "Social Media links and buttons",
+          fields: [
+            {
+              name: "social",
+              type: "array",
+              label: "Social Media",
+              fields: [
+                {
+                  name: "type",
+                  label: "Social Media Type",
+                  type: "select",
+                  options: [
+                    {
+                      label: "Whatsapp",
+                      value: "whatsapp",
+                    },
+                    {
+                      label: "Facebook",
+                      value: "facebook",
+                    },
+                    {
+                      label: "Instagram",
+                      value: "instagram",
+                    },
+                    {
+                      label: "Twitter",
+                      value: "twitter",
+                    },
+                    {
+                      label: "Linkedin",
+                      value: "linkedin",
+                    },
+                    {
+                      label: "Telegram",
+                      value: "telegram",
+                    },
+                    {
+                      label: "Snapchat",
+                      value: "snapchat",
+                    },
+                    {
+                      label: "Youtube",
+                      value: "youtube",
+                    },
+                    {
+                      label: "TikTok",
+                      value: "tiktok",
+                    },
+                    {
+                      label: "Website",
+                      value: "website",
+                    },
+                  ],
+                },
+                {
+                  name: "link",
+                  type: "text",
+                },
+              ],
+            },
+          ],
         },
       ],
-    },
-    {
-      name: "avatar",
-      type: "upload",
-      relationTo: "media",
     },
   ],
 };
