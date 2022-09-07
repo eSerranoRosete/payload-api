@@ -1,3 +1,5 @@
+import payload from "payload";
+
 const Clients = {
   slug: "clients",
   admin: {
@@ -7,6 +9,39 @@ const Clients = {
   access: {
     read: () => true,
   },
+  admin: {
+    preview: (doc) => {
+      if (doc?.id) {
+        return `https://astro-cards.vercel.app/${doc.id}`;
+      }
+      return null;
+    },
+  },
+  hooks: {
+    afterDelete: [
+      async (req, id, doc) => {
+        try {
+          await payload.delete({
+            collection: "media",
+            id: req.doc.avatar,
+          });
+        } catch (error) {
+          console.log(error.message);
+        }
+
+        if (req.doc.type != "org") {
+          try {
+            await payload.delete({
+              collection: "media",
+              id: req.doc.cover,
+            });
+          } catch (error) {
+            console.log(error.message);
+          }
+        }
+      },
+    ],
+  },
   fields: [
     {
       type: "tabs",
@@ -15,6 +50,22 @@ const Clients = {
           label: "Basic Information",
           description: "Basic information required for all users",
           fields: [
+            {
+              name: "type",
+              type: "select",
+              label: "User Type",
+              required: true,
+              options: [
+                {
+                  label: "Single User",
+                  value: "single",
+                },
+                {
+                  label: "Organization User",
+                  value: "org",
+                },
+              ],
+            },
             {
               name: "email",
               type: "email",
@@ -46,6 +97,22 @@ const Clients = {
               type: "upload",
               relationTo: "media",
               required: true,
+              hooks: {
+                beforeChange: [
+                  async (args) => {
+                    if (args.originalDoc.avatar != args.data.avatar) {
+                      try {
+                        await payload.delete({
+                          collection: "media",
+                          id: args.originalDoc.avatar,
+                        });
+                      } catch (error) {
+                        console.log(error.message);
+                      }
+                    }
+                  },
+                ],
+              },
             },
             {
               name: "cover",
@@ -53,6 +120,25 @@ const Clients = {
               type: "upload",
               relationTo: "media",
               required: true,
+              hooks: {
+                beforeChange: [
+                  async (args) => {
+                    if (
+                      args.originalDoc.type != "org" &&
+                      args.originalDoc.cover != args.data.cover
+                    ) {
+                      try {
+                        await payload.delete({
+                          collection: "media",
+                          id: args.originalDoc.cover,
+                        });
+                      } catch (error) {
+                        console.log(error.message);
+                      }
+                    }
+                  },
+                ],
+              },
             },
           ],
         },
@@ -83,6 +169,24 @@ const Clients = {
                   type: "upload",
                   relationTo: "media",
                   required: true,
+                },
+              ],
+            },
+            {
+              name: "callToAction",
+              label: "Call to Action Button",
+              type: "group",
+              required: false,
+              fields: [
+                {
+                  name: "text",
+                  label: "Text to display",
+                  type: "text",
+                },
+                {
+                  name: "url",
+                  label: "URL",
+                  type: "text",
                 },
               ],
             },
