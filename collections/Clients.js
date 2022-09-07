@@ -154,21 +154,34 @@ const Clients = {
             {
               name: "slider",
               label: "Slider",
-              type: "array",
-              required: false,
+              type: "group",
               fields: [
                 {
-                  name: "link",
-                  label: "Link",
+                  name: "title",
+                  label: "Slider Title",
                   type: "text",
                   required: false,
                 },
                 {
-                  name: "image",
-                  label: "Slider Image",
-                  type: "upload",
-                  relationTo: "media",
-                  required: true,
+                  name: "items",
+                  label: "Slider Items",
+                  type: "array",
+                  required: false,
+                  fields: [
+                    {
+                      name: "link",
+                      label: "Link",
+                      type: "text",
+                      required: false,
+                    },
+                    {
+                      name: "image",
+                      label: "Slider Image",
+                      type: "upload",
+                      relationTo: "media",
+                      required: true,
+                    },
+                  ],
                 },
               ],
             },
