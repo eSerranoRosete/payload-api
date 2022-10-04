@@ -12,7 +12,7 @@ const Clients = {
   admin: {
     preview: (doc) => {
       if (doc?.id) {
-        return `${process.env.PREVIEW_URL}${doc.id}`;
+        return `https://inteminer.vercel.app/${doc.id}`;
       }
       return null;
     },
