@@ -70,7 +70,7 @@ const Clients = {
               name: "email",
               type: "email",
               required: true,
-              unique: true,
+              unique: false,
             },
             {
               name: "firstName",
