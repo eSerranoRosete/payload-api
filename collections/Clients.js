@@ -259,6 +259,18 @@ const Clients = {
                       label: "Website",
                       value: "website",
                     },
+                    {
+                      label: "Google",
+                      value: "google",
+                    },
+                    {
+                      label: "Github",
+                      value: "github",
+                    },
+                    {
+                      label: "Discord",
+                      value: "discord",
+                    },
                   ],
                 },
                 {
